@@ -1,8 +1,9 @@
 import java.util.Scanner;
+import java.util.LinkedList;
 
 public class GestionHotellerieConsole {
 
-    public static void main(String[] args) {
+    public GestionHotellerieConsole() {
 
         System.out.println("----------------------------------------");
         System.out.println("Bienvenue dans votre logiciel de gestion");
@@ -23,7 +24,9 @@ public class GestionHotellerieConsole {
         if (getchoixMenu.length() >= 0) {
             switch (getchoixMenu.charAt(0)) {
             case '1':
-                System.out.println("Voici le détail des chambres :");
+                System.out.println("----------------------------------------");
+                System.out.println("            Détail des chambres         ");
+                System.out.println("----------------------------------------");
                 for (Chambres chambre : chambres) {
 
                     int surfaceChambres = chambre.getSurface();
@@ -31,27 +34,66 @@ public class GestionHotellerieConsole {
                     int prix_chambres = chambre.getPrix();
 
                     System.out.println("La "+ chambre.name() +" à une surface de "+ surfaceChambres +"m² puis elle a "+ nbr_lits_Chambres +" lits "+ prix_chambres +" \u20AC");
-                   
+                
                 }
                 break;
             case '2':
+                System.out.println("----------------------------------------");
+                System.out.println("        Disponibilité des chambres      ");
+                System.out.println("----------------------------------------");
                 break;
             case '3':
                 
+                LinkedList<String> Listes_Chambres = new LinkedList<String>();
+
+                for (Chambres chambre : chambres) {
+
+                Listes_Chambres.add(chambre.name()+ " 0");
+
+
+                }
+
+                System.out.println("----------------------------------------");
+                System.out.println("         Système de réservation         ");
+                System.out.println("----------------------------------------");
+                System.out.println("");
+                System.out.println("1. Effectuer une réservation");
+                System.out.println("2. Revenir au menu principal");
+                System.out.println("Contenu de la liste");
+
+                for (String chambre : Listes_Chambres) {
+                    System.out.println(chambre);
+                }
+
+
                 break;
             case '4':
-                
+                System.out.println("----------------------------------------");
+                System.out.println("             Commande de Repas          ");
+                System.out.println("----------------------------------------");
                 break;
             case '5':
-                System.out.println("");
+                System.out.println("----------------------------------------");
+                System.out.println("        Enregistrement de Facture       ");
+                System.out.println("----------------------------------------");
                 break;
             case '6':
+                System.out.println("Aurevoir !!");
                 System.exit(-1);
                 break;
             default:
+                System.out.println("Erreur, veuillez choisir un des menus proposées");
                 break;
             }
         } 
-        
+
+        scan.close();
+
+    }
+
+    public static void main(String[] args) {
+
+    new GestionHotellerieConsole();
+
     }
 }
