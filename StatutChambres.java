@@ -1,4 +1,6 @@
-public class StatutChambres {
+import java.io.Serializable;
+
+public class StatutChambres implements Serializable {
     private Chambres typeChambre; // Type de chambre basé sur l'énumération Chambres
     private boolean estReservee;  // Indicateur de réservation
 
