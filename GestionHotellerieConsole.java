@@ -81,6 +81,7 @@ public class GestionHotellerieConsole {
                         System.out.println("La "+ chambre.name() +" à une surface de "+ surfaceChambres +"m² puis elle a "+ nbr_lits_Chambres +" lits "+ prix_chambres +" \u20AC");
                     }
                     break;
+                    
                 case '2':
                     System.out.println("----------------------------------------");
                     System.out.println("        Disponibilité des chambres      ");
@@ -89,37 +90,30 @@ public class GestionHotellerieConsole {
                         System.out.println("La chambre "+ statut.getTypeChambre() +" est reservee ? --> "+statut.estReservee());
                     }
                     break;
+
                 case '3':
-
-                    System.out.println("----------------------------------------");
-                    System.out.println("         Système de réservation         ");
-                    System.out.println("----------------------------------------");
-                    System.out.println("");
-                    System.out.println("1. Effectuer une réservation");
-                    System.out.println("2. Revenir au menu principal");
-                    System.out.println("Contenu de la liste");
-
-                    Chambres chambreAModifier = Chambres.Chambre_1;//on definit la chambre pour laquelle on veut modifier le statut de reservation
-
+                    Chambres chambreAModifier = Reservation.menuReservationChambres(scan, listeStatuts);//on definit la chambre pour laquelle on veut modifier le statut de reservation
+                    //boolean etatChambreAModifier = Reservation.uneAutreFonction();
                     for (StatutChambres statut : listeStatuts) {//pour tout les objets StatutChambres dans listeStatuts qu'on appelera "statut"
                         if (statut.getTypeChambre() == chambreAModifier) {//si le typeChambre de statut est egal à la chambre à modifier
-                            statut.setReservation(true);//alors on set la valeur de réservation a true
+                            //statut.setReservation(etatChambreAModifier);//alors on set la valeur que l'utilisateur veut lui affecter (reservee ou non)
                         }
-                        System.out.println(statut.estReservee());//ici on affiche juste le statut de reservation
                     }
                     //cette boucle for sert surtout au cas où les statut de chambre dans listeStatuts ne seraient pas dans le bon ordre
                     //mais meme si il y a peu de chance qu'ils soient désordonnés, il est préférable de faire cette vérification
-
                     break;
+
                 case '4':
                     Menu_Menus(scan);
                     break;
+
                 case '5':
                     System.out.println("----------------------------------------");
                     System.out.println("        Enregistrement de Facture       ");
                     System.out.println("----------------------------------------");
 
                     break;
+
                 case '6':
                     System.out.println("Aurevoir !!");
                     continuProgram = false;
@@ -132,6 +126,7 @@ public class GestionHotellerieConsole {
                     }
                     //System.exit(-1);
                     break;
+
                 default:
                     System.out.println("Erreur, veuillez choisir un des menus proposées");
                     break;
@@ -179,7 +174,7 @@ public void Menu_Menus(Scanner scan) {
                         System.out.println("https://www.just-eat.fr");
                         break;
                     case '3':
-                        new GestionHotellerieConsole();
+                        //new GestionHotellerieConsole();
                         break;
                     default:
                         System.out.println("Veuillez utiliser un des choix diponibles");
