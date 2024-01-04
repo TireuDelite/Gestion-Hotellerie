@@ -6,14 +6,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 
 public class GestionHotellerieConsole {
 
     public static boolean continuProgram = true;
     static Chambres[] chambres = Chambres.values();
-    static Menu[] menus = Menu.values();
     static List<StatutChambres> listeStatuts = new ArrayList<>(); //liste d'objets StatutChambres contenant les reservations
 
     @SuppressWarnings("unchecked")//pour qu'il enleve le warning lors de la deserialisation car on ne check pas le type de ce qu'on deserialise
@@ -95,7 +93,8 @@ public class GestionHotellerieConsole {
                     Reservation.menuReservationChambres(scan, listeStatuts);
                     break;
                 case '4':
-                    Menu_Menus(scan);
+                    String plats_commandes = Menu.Menu_Repas(scan);
+                    System.out.println(plats_commandes);
                     break;
 
                 case '5':
@@ -126,65 +125,6 @@ public class GestionHotellerieConsole {
         }
         scan.close();
     }
-
-public void Menu_Menus(Scanner scan) {
-
-        String ChoixMenuMenus = "";
-
-        while (!ChoixMenuMenus.equals("3")) {
-
-                System.out.println("----------------------------------------");
-                System.out.println("             Commande de Repas          ");
-                System.out.println("----------------------------------------");
-                System.out.println("1. Afficher les plats disponibles");
-                System.out.println("2. Commander un plat en dehors de l'hotel");
-                System.out.println("3. Retour au menu principal");
-                
-            if (ChoixMenuMenus.length() >= 0) {
-                try {
-                    ChoixMenuMenus = scan.next();
-
-                    switch (ChoixMenuMenus.charAt(0)) {
-
-                    case '1':
-                        System.out.println("----------------------------------------");
-                        System.out.println("             Plats disponibles          ");
-                        System.out.println("----------------------------------------");
-                        for (Menu menu : menus) {
-
-                            String menu_et_prix = menu.toString();
-
-                            System.out.println(menu_et_prix);
-
-                        }
-                        break;
-                    case '2':
-                        System.out.println("Voici les liens pourvant être utilisés pour commander en dehors de l'hotel");
-                        System.out.println("https://www.ubereats.com/fr/");
-                        System.out.println("http://www.deliveroo.fr");
-                        System.out.println("https://www.just-eat.fr");
-                        break;
-                    case '3':
-                        new GestionHotellerieConsole();
-                        break;
-                    default:
-                        System.out.println("Veuillez utiliser un des choix diponibles");
-                        break;
-                    }
-                }
-
-                catch (InputMismatchException e) {
-
-                System.out.println("Veuillez entrer un nombre valide.");
-                scan.next(); // Pour consommer la saisie incorrecte
-
-                }
-            }
-        }
-
-        scan.close();
-}
-
 
 
     public static void main(String[] args)
