@@ -92,17 +92,8 @@ public class GestionHotellerieConsole {
                     break;
 
                 case '3':
-                    Chambres chambreAModifier = Reservation.menuReservationChambres(scan, listeStatuts);//on definit la chambre pour laquelle on veut modifier le statut de reservation
-                    //boolean etatChambreAModifier = Reservation.uneAutreFonction();
-                    for (StatutChambres statut : listeStatuts) {//pour tout les objets StatutChambres dans listeStatuts qu'on appelera "statut"
-                        if (statut.getTypeChambre() == chambreAModifier) {//si le typeChambre de statut est egal à la chambre à modifier
-                            //statut.setReservation(etatChambreAModifier);//alors on set la valeur que l'utilisateur veut lui affecter (reservee ou non)
-                        }
-                    }
-                    //cette boucle for sert surtout au cas où les statut de chambre dans listeStatuts ne seraient pas dans le bon ordre
-                    //mais meme si il y a peu de chance qu'ils soient désordonnés, il est préférable de faire cette vérification
+                    Reservation.menuReservationChambres(scan, listeStatuts);
                     break;
-
                 case '4':
                     Menu_Menus(scan);
                     break;
@@ -174,7 +165,7 @@ public void Menu_Menus(Scanner scan) {
                         System.out.println("https://www.just-eat.fr");
                         break;
                     case '3':
-                        //new GestionHotellerieConsole();
+                        new GestionHotellerieConsole();
                         break;
                     default:
                         System.out.println("Veuillez utiliser un des choix diponibles");

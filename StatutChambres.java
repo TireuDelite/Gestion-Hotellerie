@@ -69,7 +69,10 @@ public class StatutChambres implements Serializable {
         this.nbrNuits = nbrNuits;
     }
 
-
-
-
+    public void resetStatut() {
+        estReservee = false; // Remet la réservation à non réservée
+        relatedClient = null; // Supprime le client lié
+        repasCommandes.clear(); // Efface la liste des repas commandés
+        nbrNuits = 0; // Remet le nombre de nuits à 0
+    }
 }
