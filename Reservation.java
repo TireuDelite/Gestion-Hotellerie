@@ -81,7 +81,7 @@ public class Reservation {
                                             System.out.println("       Modification de reservation      ");
                                             System.out.println("----------------------------------------");
                                             System.out.println("Vous avez choisi de transferer la reservation vers la "+listeStatuts.get(newNumChambre-1).getTypeChambre()+".");
-                                            System.out.println("Chambre de "+listeStatuts.get(newNumChambre-1).getTypeChambre().getSurface()+"m2, "+listeStatuts.get(newNumChambre-1).getTypeChambre().getNombre_Lits()+" et coutant "+listeStatuts.get(newNumChambre-1).getTypeChambre().getPrix()+" euros par nuit.");
+                                            System.out.println("Chambre de "+listeStatuts.get(newNumChambre-1).getTypeChambre().getSurface()+"m2, "+listeStatuts.get(newNumChambre-1).getTypeChambre().getNombre_Lits()+" lit(s) et coutant "+listeStatuts.get(newNumChambre-1).getTypeChambre().getPrix()+" euros par nuit.");
                                             System.out.println("Est-ce que c'est bon pour vous ?");
                                             System.out.println("1. Oui, confirmer la modification vers la chambre selectionnee");
                                             System.out.println("2. Non, choisir une autre chambre vers laquelle transferer la reservation");
@@ -193,7 +193,8 @@ public class Reservation {
                                 while(choix<1 || choix>7)
                                 {
                                     choix = scan.nextInt();
-                                    if((choix>=1 || choix<=7))
+                                    scan.nextLine();
+                                    if((choix>=1 && choix<=7))
                                     {
                                         if (listeStatuts.get(choix-1).estReservee()) 
                                         {
@@ -201,9 +202,11 @@ public class Reservation {
                                             dansBoucle2=false;
                                         }else{
                                             System.out.println("La chambre selectionnee n'est pas reservee, veuillez en choisir une autre...");
+                                            choix=0;
                                         }
                                     }else{
                                         System.out.println("Vous n'avez pas fait de choix correct, veuillez recommencer...");
+                                        choix=0;
                                     }
                                 }
                             }
@@ -294,9 +297,11 @@ public class Reservation {
                             System.out.println("Vous avez entrez "+ prenomClient +" "+ nomClient +". Est-ce que c'est bon pour vous ?");
                             System.out.println("1. Oui, continuer...");
                             System.out.println("2. Non, modifier le nom et prenom...");
+                            choix=0;
                             while(choix != 1 && choix != 2)
                             {
                                 choix = scan.nextInt();
+                                scan.nextLine();
                                 if (choix==1) {
                                     dansBoucle3=false;
                                 }
@@ -305,7 +310,7 @@ public class Reservation {
                                 }
                             }
                         }
-                        System.out.println("Vous avez reserve la "+listeStatuts.get(numChambre-1).getTypeChambre()+" pour "+nbrNuits+" nuit(s) pour le client"+prenomClient +" "+ nomClient);
+                        System.out.println("Vous avez reserve la "+listeStatuts.get(numChambre-1).getTypeChambre()+" pour "+nbrNuits+" nuit(s) pour le client "+prenomClient +" "+ nomClient);
                         System.out.println("Est-ce que ceci vous convient ?");
                         System.out.println("1. Oui, valider la reservation et retourner au menu principal");
                         System.out.println("2. Non, recommencer la reservation en renseignant d'autres informations");
@@ -409,11 +414,11 @@ public class Reservation {
                         System.out.println("----------------------------------------");
                         System.out.println("Quelle reservation souhaitez vous modifier ?");
                         System.out.println("Entrez un chiffre entre 1 et 7...");
-
+                        choix=0;
                         while(choix<1 || choix>7)
                         {
                             choix = scan.nextInt();
-                            if((choix>=1 || choix<=7))
+                            if((choix>=1 && choix<=7))
                             {
                                 if (listeStatuts.get(choix-1).estReservee()) 
                                 {
