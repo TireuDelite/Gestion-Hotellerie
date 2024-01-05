@@ -6,7 +6,7 @@ public class StatutChambres implements Serializable {
     private Chambres typeChambre;       // Type de chambre basé sur l'énumération Chambres
     private boolean estReservee;        // Indicateur de réservation
     private String relatedClient;       // Nom du client relié à la réservation
-    private List<Menu> repasCommandes;  // repas commandés
+    private List<Repas> repasCommandes;  // repas commandés
     private int nbrNuits;               // Nombre de nuits de la réservation
 
     // Constructeur
@@ -39,7 +39,7 @@ public class StatutChambres implements Serializable {
     }
 
     // Getter pour repasCommandes
-    public List<Menu> getRepasCommandes() {
+    public List<Repas> getRepasCommandes() {
         return repasCommandes;
     }
 
@@ -60,7 +60,7 @@ public class StatutChambres implements Serializable {
     }
 
     // Setter pour repasCommandes
-    public void addRepasCommandes(Menu repas) {
+    public void addRepasCommandes(Repas repas) {
         repasCommandes.add(repas);
     }
 

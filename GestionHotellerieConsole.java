@@ -67,6 +67,7 @@ public class GestionHotellerieConsole {
             if (getchoixMenu.length() >= 0) {
                 switch (getchoixMenu.charAt(0)) {
                 case '1':
+                    Clear.clear();
                     System.out.println("----------------------------------------");
                     System.out.println("            Détail des chambres         ");
                     System.out.println("----------------------------------------");
@@ -81,6 +82,7 @@ public class GestionHotellerieConsole {
                     break;
                     
                 case '2':
+                    Clear.clear();
                     System.out.println("----------------------------------------");
                     System.out.println("        Disponibilité des chambres      ");
                     System.out.println("----------------------------------------");
@@ -93,17 +95,11 @@ public class GestionHotellerieConsole {
                     Reservation.menuReservationChambres(scan, listeStatuts);
                     break;
                 case '4':
-                    String plats_commandes = Menu.Menu_Repas(scan);
-                    System.out.println(plats_commandes);
+                    Menu.Menu_Repas(scan, listeStatuts);
                     break;
-
                 case '5':
-                    System.out.println("----------------------------------------");
-                    System.out.println("        Enregistrement de Facture       ");
-                    System.out.println("----------------------------------------");
-
+                    Facturation.Menu_Facturation(scan, listeStatuts);
                     break;
-
                 case '6':
                     System.out.println("Aurevoir !!");
                     continuProgram = false;
