@@ -1,21 +1,17 @@
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+
 
 public class Menu {
 
     static Repas[] menus = Repas.values();
 
-    public static String Menu_Repas(Scanner scan) {
+    public static void Menu_Repas(Scanner scan, List<StatutChambres> listeStatuts) { //Cette méthode permet de récup le plat sélectionné 
 
         String ChoixMenuRepas = "";
-        String test = "";
 
         while (!ChoixMenuRepas.equals("3")) {
-
                 System.out.println("----------------------------------------");
                 System.out.println("             Commande de Repas          ");
                 System.out.println("----------------------------------------");
@@ -43,16 +39,16 @@ public class Menu {
                         }
 
                         System.out.println(ChoixMenuRepas);
-                        test = Menu.Menu_Choisir_Repas(scan);
-
-                        System.out.println(test);
+                        Menu.Menu_Choisir_Repas(scan, listeStatuts);
                     
                         break;
                     case '2':
+                        Clear.clear();
                         System.out.println("Voici les liens pourvant être utilisés pour commander en dehors de l'hotel");
                         System.out.println("https://www.ubereats.com/fr/");
                         System.out.println("http://www.deliveroo.fr");
                         System.out.println("https://www.just-eat.fr");
+                        System.out.println("");
                         break;
                     case '3':
                         break;
@@ -70,15 +66,16 @@ public class Menu {
                 }
             }
         }
-        return test;
     }
 
-    public static String Menu_Choisir_Repas(Scanner scan) {
+    public static void Menu_Choisir_Repas(Scanner scan, List<StatutChambres> listeStatuts) {
 
-        String ChoixMenuRepas2 = "";
+        int ChoixMenuRepas2 = 0;
+        int numChambre = 0;
 
-        while (!ChoixMenuRepas2.equals("6")) {
+        while (ChoixMenuRepas2 != 6) {
 
+                Clear.clear();
                 System.out.println("----------------------------------------");
                 System.out.println("             Plats disponibles          ");
                 System.out.println("----------------------------------------");
@@ -90,34 +87,20 @@ public class Menu {
                 System.out.println("5. Spaghetti Bolognaise");
                 System.out.println("6. Revenir en arrière");
 
-            if (ChoixMenuRepas2.length() >= 0) {
+                ChoixMenuRepas2 = scan.nextInt();
+
+
+            if (ChoixMenuRepas2 > 0 && ChoixMenuRepas2 != 6) {
+
+                System.out.println("Veuillez nous indiquer votre numéro de chambre :");
+
+                numChambre = scan.nextInt();
+
                 try {
-                    ChoixMenuRepas2 = scan.next();
+                    listeStatuts.get(numChambre - 1).addRepasCommandes(Repas.values()[ChoixMenuRepas2 - 1]);
 
-                    switch (ChoixMenuRepas2.charAt(0)) {
 
-                    case '1':
-                        
-                        return "Steak Frites";
-                    case '2':
-
-                        return "Lasagnes";
-                    case '3':
-
-                        return "Salade César";
-                    case '4':
-
-                        return "Hambuger";
-                    case '5':
-
-                        return "Spaghetti Bolognaise";
-                    case '6':
-                    default:
-                        System.out.println("Veuillez utiliser un des choix diponibles");
-                        
-                    }
                 }
-
                 catch (InputMismatchException e) {
 
                 System.out.println("Veuillez entrer un nombre valide.");
@@ -125,40 +108,6 @@ public class Menu {
 
                 }
             }
-        }
-
-        return "Choix invalide ou retour en arrière";
-    }
-
-    public static void Ecrire_Factures(String nom_prenom, String plats_commandes, String nbrNuits) {
-
-        String currentDate = getDate.getCurrentDate();
-
-
-        try {
-
-            String fileName = nom_prenom + " " + currentDate;
-            File file = new File("~/Factures/" + fileName);
-
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            FileWriter fw = new FileWriter(file.getAbsoluteFile());
-            BufferedWriter bw = new BufferedWriter(fw);
-
-            bw.write(nom_prenom + "\n" + plats_commandes + "\n" + nbrNuits);
-
-            bw.close();
-
-            System.out.println("Facture éditée avec succès");
-
-        }
-
-        catch (IOException e) {
-
-            e.printStackTrace();
-
         }
     }
 }
