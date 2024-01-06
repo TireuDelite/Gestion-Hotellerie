@@ -40,7 +40,8 @@ public class Facturation {
 
                         numChambreFacture = scan.nextInt();
 
-                        Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits());
+                        Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits(), listeStatuts.get(numChambreFacture - 1).getPrixReservation());
+                        listeStatuts.get(numChambreFacture - 1).resetStatut();
                         System.out.println(ChoixMenuFacturation);
                     
                         break;
@@ -62,14 +63,14 @@ public class Facturation {
         }
     }
 
-    public static void Ecrire_Factures(String nom_prenom, List<Repas> plats_commandes , int nbrNuits) {
+    public static void Ecrire_Factures(String nom_prenom, List<Repas> plats_commandes , int nbrNuits, int Cout_Total) {
 
         String currentDate = getDate.getCurrentDate();
 
         try {
 
             String fileName = nom_prenom + " " + currentDate;
-            File file = new File("Factures/" + fileName + ".txt");
+            File file = new File("/etc/JAVA/Gestion-Hotellerie/Factures/" + fileName + ".txt");
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -78,11 +79,13 @@ public class Facturation {
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write(nom_prenom + "\n" + plats_commandes + "\n" + nbrNuits);
+            bw.write("Nom et prénom du client : " + nom_prenom + "\nRepas commandés : " + plats_commandes + "\nNombre de nuits passés dans l'hotel : " + nbrNuits + "\nCout total : " + Cout_Total + " \u20AC");
 
             bw.close();
 
             System.out.println("Facture editee avec succès");
+
+
             
         }
 

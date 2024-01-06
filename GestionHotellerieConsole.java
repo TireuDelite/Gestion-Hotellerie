@@ -77,7 +77,7 @@ public class GestionHotellerieConsole {
                         int nbr_lits_Chambres = chambre.getNombre_Lits();
                         int prix_chambres = chambre.getPrix();
 
-                        System.out.println("La "+ chambre.name() +" à une surface de "+ surfaceChambres +"m² puis elle a "+ nbr_lits_Chambres +" lits "+ prix_chambres +" \u20AC");
+                        System.out.println("La "+ chambre.name() +" à une surface de "+ surfaceChambres +"m² puis elle a "+ nbr_lits_Chambres +" lits et coute"+ prix_chambres +" \u20AC par nuit");
                     }
                     break;
                     

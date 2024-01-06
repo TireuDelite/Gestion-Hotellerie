@@ -6,7 +6,7 @@ public class getDate {
 
         Date currentDate = new Date(); //On recupere la date
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); //On la formate
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy"); //On la formate
 
         return dateFormat.format(currentDate); //On la retourne
 
