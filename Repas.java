@@ -22,7 +22,7 @@ public enum Repas {
         this.Prix = Prix;
     }
 
-    public String toString() {
+    public String toString() { // toString permet de return une String ici on renvoie le plat ainsi que son prix
         return "Plat: "+ this.Plat + ", Prix: " + this.Prix + "\u20AC";
     }
 }

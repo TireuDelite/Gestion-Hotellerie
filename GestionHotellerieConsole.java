@@ -50,6 +50,7 @@ public class GestionHotellerieConsole {
         Scanner scan = new Scanner(System.in);
         while (continuProgram) 
         {
+            // Affichage menu principal
             System.out.println("----------------------------------------");
             System.out.println("Bienvenue dans votre logiciel de gestion");
             System.out.println("----------------------------------------");
@@ -63,14 +64,14 @@ public class GestionHotellerieConsole {
 
             String getchoixMenu = scan.next();
 
-            if (getchoixMenu.length() >= 0) {
-                switch (getchoixMenu.charAt(0)) {
-                case '1':
+            if (getchoixMenu.length() >= 0) { // L'utilisateur doit rentrer au moins 1 caractères
+                switch (getchoixMenu.charAt(0)) { // Ici on prends uniquement le premier caractère que l'utilisateur entre
+                case '1': // 
                     Clear.clear();
                     System.out.println("----------------------------------------");
                     System.out.println("            Detail des chambres         ");
                     System.out.println("----------------------------------------");
-                    for (Chambres chambre : chambres) {
+                    for (Chambres chambre : chambres) { // Boucle For each qui récupère Surface, nombre_lits et Prix 
 
                         int surfaceChambres = chambre.getSurface();
                         int nbr_lits_Chambres = chambre.getNombre_Lits();
@@ -85,20 +86,23 @@ public class GestionHotellerieConsole {
                     System.out.println("----------------------------------------");
                     System.out.println("        Disponibilite des chambres      ");
                     System.out.println("----------------------------------------");
-                    for (StatutChambres statut : listeStatuts) {
+                    for (StatutChambres statut : listeStatuts) { // Boucle For each qui récupère la lsites des chambre ainsi que leurs status (Est reservée)
                         System.out.println("La chambre "+ statut.getTypeChambre() +" est reservee ? --> "+statut.estReservee());
                     }
                     break;
 
                 case '3':
+                    // Appelle vers la fonction menuReservationChambres
                     Reservation.menuReservationChambres(scan, listeStatuts);
                     Clear.clear();
                     break;
                 case '4':
+                    // Appelle vers la fonction Menu_Repas
                     Menu.Menu_Repas(scan, listeStatuts);
                     Clear.clear();
                     break;
                 case '5':
+                    // Appelle vers la fonction Menu Facturation
                     Facturation.Menu_Facturation(scan, listeStatuts);
                     Clear.clear();
                     break;
@@ -115,13 +119,13 @@ public class GestionHotellerieConsole {
                     //System.exit(-1);
                     break;
 
-                default:
+                default: // si l'utilisateur renseigne un nombre non compris entre 1 et 6 alors affichage de l'erreur
                     System.out.println("Erreur, veuillez choisir un des menus proposees");
                     break;
                 }
             }
         }
-        scan.close();
+        scan.close(); // Fermeture du Scanner afin de liberer la mémoire
     }
 
 

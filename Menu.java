@@ -98,11 +98,11 @@ public class Menu {
                 numChambre = scan.nextInt();
 
                 try {
-                    listeStatuts.get(numChambre - 1).addRepasCommandes(Repas.values()[ChoixMenuRepas2 - 1]);
 
+                    listeStatuts.get(numChambre - 1).addRepasCommandes(Repas.values()[ChoixMenuRepas2 - 1]); // On ajoute le repas en fonction du numéro de chambre dans la liste
 
                 }
-                catch (InputMismatchException e) {
+                catch (InputMismatchException e) { // Exception levé si l'utilisateur ne renseigne pas un numéro compris dans le pool 1 à 6
 
                 System.out.println("Veuillez entrer un nombre valide.");
                 scan.next(); // Pour consommer la saisie incorrecte
