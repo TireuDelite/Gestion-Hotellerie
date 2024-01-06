@@ -21,7 +21,8 @@ public enum Repas {
         this.Plat = Plat;
         this.Prix = Prix;
     }
-
+    
+    @Override
     public String toString() { // toString permet de return une String ici on renvoie le plat ainsi que son prix
         return "Plat: "+ this.Plat + ", Prix: " + this.Prix + "\u20AC";
     }

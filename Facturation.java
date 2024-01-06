@@ -102,21 +102,9 @@ public class Facturation {
             bw.close();
 
             System.out.println("Facture editee avec succes");
-
-
-            
         }
-
         catch (IOException e) {
-
             e.printStackTrace();
-
         }
     }
-
 }
-
-
-
-
-

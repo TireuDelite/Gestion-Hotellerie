@@ -3,9 +3,11 @@ import java.util.Scanner;
 
 public class Reservation {
 
+    //declaration des variables
     private static int chambresReservables, choix, choix2;
     private static boolean dansBoucle1, dansBoucle2, dansBoucle3;
 
+    //methode d'affichage du header menu systeme de reservation
     private static void printHeaderSysResa(List<StatutChambres> listeStatuts) {
         chambresReservables=0;
         Clear.clear();
@@ -24,6 +26,7 @@ public class Reservation {
         }
     }
 
+    //methode de modification de reservation
     private static void modifierResa(Scanner scan, List<StatutChambres> listeStatuts, int numChoixChambre)
     {
         int newNumChambre = 0;
@@ -36,13 +39,13 @@ public class Reservation {
             System.out.println("----------------------------------------");
             System.out.println("       Modification de reservation      ");
             System.out.println("----------------------------------------");
-            System.out.println("Reservation selectionnee :");
+            System.out.println("Reservation selectionnee :");//affichage des information de la chambre selectionnee a modifier
             System.out.println("Chambre reservee : "+listeStatuts.get(numChoixChambre-1).getTypeChambre());
             System.out.println("Client associe : "+listeStatuts.get(numChoixChambre-1).getRelatedClient());
             System.out.println("Nombre de nuit(s) : "+listeStatuts.get(numChoixChambre-1).getNbrNuits()+" nuit(s)");
             System.out.println("\nQue souhaitez vous faire ?");
-            if (chambresReservables>0)
-                System.out.println("1. Modifier la chambre de cette reservation");
+            if (chambresReservables>0)//si il y a au moins une chambre libre
+                System.out.println("1. Modifier la chambre de cette reservation");//on print le choix de modification de chambre
             System.out.println("2. Modifier le nom/prenom du client associe a la reservation");
             System.out.println("3. Modifier le nombre de nuit(s) de la reservation");
             System.out.println("4. Selectionner une autre reservation");
@@ -54,12 +57,12 @@ public class Reservation {
                 if (choix>=1 && choix<=5) {
                     switch (choix) {
                         case 1:
-                            if (chambresReservables==0)
-                                break;
+                            if (chambresReservables==0) //si l'user a entré 1 meme si ca ne lui était pas proposé 
+                                break;//on sort de la case
                             newNumChambre=0;
                             while (newNumChambre>7 || newNumChambre<1) 
                             {
-                                printHeaderSysResa(listeStatuts);
+                                printHeaderSysResa(listeStatuts);//appel du print du header
                                 System.out.println("----------------------------------------");
                                 System.out.println("       Modification de reservation      ");
                                 System.out.println("----------------------------------------");
@@ -136,8 +139,8 @@ public class Reservation {
                                     }
                                 }
                             }
-                            String newRelatedClient = newPrenomClient+" "+newNomClient;
-                            listeStatuts.get(numChoixChambre-1).setRelatedClient(newRelatedClient);
+                            String newRelatedClient = newPrenomClient+" "+newNomClient;//on colle les deux parties dans une nouvelle variable String
+                            listeStatuts.get(numChoixChambre-1).setRelatedClient(newRelatedClient);//et on l'applique au relatedClient de la chambre
                             dansBoucle1=false;
                             break;
                         case 3:
