@@ -32,19 +32,32 @@ public class Facturation {
                     switch (ChoixMenuFacturation.charAt(0)) {
 
                     case '1':
-                        System.out.println("----------------------------------------");
-                        System.out.println("          edition de la facture         ");
-                        System.out.println("----------------------------------------");
+                        while(numChambreFacture<1 || numChambreFacture>7) {
 
-                        System.out.println(("Pour quel chambre souhaitez vous editer une facture ?"));
+                            System.out.println("----------------------------------------");
+                            System.out.println("          edition de la facture         ");
+                            System.out.println("----------------------------------------");
 
-                        numChambreFacture = scan.nextInt();
+                            System.out.println(("Pour quel chambre souhaitez vous editer une facture ?"));
 
-                        Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits(), listeStatuts.get(numChambreFacture - 1).getPrixReservation());
-                        listeStatuts.get(numChambreFacture - 1).resetStatut();
-                        System.out.println(ChoixMenuFacturation);
-                    
-                        break;
+                            numChambreFacture = scan.nextInt();
+
+                            if ((numChambreFacture>= 1 && numChambreFacture <= 7)) {
+                                if (listeStatuts.get(numChambreFacture - 1).estReservee()) {
+                                    Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits(), listeStatuts.get(numChambreFacture - 1).getPrixReservation());
+                                    listeStatuts.get(numChambreFacture - 1).resetStatut();
+                                    System.out.println(ChoixMenuFacturation);
+                                }
+                                else {
+                                    System.out.println("La chambre designe n'est pas reserve");
+                                    numChambreFacture = 0;
+                                }
+                            }
+                            else {
+                                System.out.println("La chambre indique n'existe pas, veuillez réessayer...");
+                            }
+                            break;
+                    }
                     case '2':
                         break;
                     default:
@@ -63,7 +76,7 @@ public class Facturation {
         }
     }
 
-    public static void Ecrire_Factures(String nom_prenom, List<Repas> plats_commandes , int nbrNuits, int Cout_Total) {
+    public static void Ecrire_Factures(String nom_prenom, List<Repas> plats_commandes , int nbrNuits, int Cout_total) {
 
         String currentDate = getDate.getCurrentDate();
         String userDirectory = System.getProperty("user.home");
@@ -71,7 +84,7 @@ public class Facturation {
         try {
 
             String fileName = nom_prenom + " " + currentDate;
-            File file = new File(userDirectory + fileName + ".txt");
+            File file = new File(userDirectory + "/" + fileName + ".txt");
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -80,11 +93,11 @@ public class Facturation {
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write("Nom et prénom du client : " + nom_prenom + "\nRepas commandés : " + plats_commandes + "\nNombre de nuits passés dans l'hotel : " + nbrNuits + "\nCout total : " + Cout_Total + " \u20AC");
+            bw.write("Nom et prénom du client : " + nom_prenom + "\nRepas commandés : " + plats_commandes + "\nNombre de nuits passés dans l'hotel : " + nbrNuits + "\nCout total : " + Cout_total + " \u20AC");
 
             bw.close();
 
-            System.out.println("Facture editee avec succès");
+            System.out.println("Facture editee avec succes");
 
 
             

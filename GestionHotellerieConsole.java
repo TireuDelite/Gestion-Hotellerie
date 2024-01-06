@@ -92,12 +92,15 @@ public class GestionHotellerieConsole {
 
                 case '3':
                     Reservation.menuReservationChambres(scan, listeStatuts);
+                    Clear.clear();
                     break;
                 case '4':
                     Menu.Menu_Repas(scan, listeStatuts);
+                    Clear.clear();
                     break;
                 case '5':
                     Facturation.Menu_Facturation(scan, listeStatuts);
+                    Clear.clear();
                     break;
                 case '6':
                     System.out.println("Aurevoir !!");
