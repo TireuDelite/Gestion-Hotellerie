@@ -1,23 +1,10 @@
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-public class StatutChambres implements Serializable {
-    private Chambres typeChambre;       // Type de chambre base sur l'enumeration Chambres
-    private boolean estReservee;        // Indicateur de reservation
-    private String relatedClient;       // Nom du client relie à la reservation
-    private List<Repas> repasCommandes; // repas commandes
-    private int nbrNuits;               // Nombre de nuits de la reservation
-    private int prixReservation;        // prix total de la réservation
+public class StatutChambres extends VariableReservation {
 
     // Constructeur
     public StatutChambres(Chambres typeChambre) {
-        this.typeChambre = typeChambre;
-        estReservee = false; // Initialement non reservee
-        relatedClient = null;
-        repasCommandes = new ArrayList<>();
-        nbrNuits = 0;
-        prixReservation = 0;
+        super(typeChambre);
     }
 
     // Getter pour typeChambre

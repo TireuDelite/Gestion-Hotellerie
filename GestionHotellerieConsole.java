@@ -50,7 +50,6 @@ public class GestionHotellerieConsole {
         Scanner scan = new Scanner(System.in);
         while (continuProgram) 
         {
-
             System.out.println("----------------------------------------");
             System.out.println("Bienvenue dans votre logiciel de gestion");
             System.out.println("----------------------------------------");
