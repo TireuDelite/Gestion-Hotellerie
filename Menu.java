@@ -108,7 +108,7 @@ public class Menu {
                         }
                     }
                     else {
-                        System.out.println("Vous avez entre un mauvais numéro de chambre, Veuillez ressayer")
+                        System.out.println("Vous avez entre un mauvais numéro de chambre, Veuillez ressayer");
                     }
                 }
                 catch (InputMismatchException e) { // Exception levé si l'utilisateur ne renseigne pas un numéro compris dans le pool 1 à 6
