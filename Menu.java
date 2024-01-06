@@ -12,6 +12,7 @@ public class Menu {
         String ChoixMenuRepas = "";
 
         while (!ChoixMenuRepas.equals("3")) {
+                Clear.clear();
                 System.out.println("----------------------------------------");
                 System.out.println("             Commande de Repas          ");
                 System.out.println("----------------------------------------");

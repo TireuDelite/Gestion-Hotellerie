@@ -32,18 +32,31 @@ public class Facturation {
                     switch (ChoixMenuFacturation.charAt(0)) {
 
                     case '1':
-                        System.out.println("----------------------------------------");
-                        System.out.println("          edition de la facture         ");
-                        System.out.println("----------------------------------------");
+                        while(numChambreFacture<1 || numChambreFacture>7) {
 
-                        System.out.println(("Pour quel chambre souhaitez vous editer une facture ?"));
+                            System.out.println("----------------------------------------");
+                            System.out.println("          edition de la facture         ");
+                            System.out.println("----------------------------------------");
 
-                        numChambreFacture = scan.nextInt();
+                            System.out.println(("Pour quel chambre souhaitez vous editer une facture ?"));
 
-                        Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits());
-                        System.out.println(ChoixMenuFacturation);
-                    
-                        break;
+                            numChambreFacture = scan.nextInt();
+
+                            if ((numChambreFacture>= 1 && numChambreFacture <= 7)) {
+                                if (listeStatuts.get(numChambreFacture - 1).estReservee()) {
+                                Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits());
+                                System.out.println(ChoixMenuFacturation);
+                                }
+                                else {
+                                    System.out.println("La chambre designe n'est pas reserve");
+                                    numChambreFacture = 0;
+                                }
+                            }
+                            else {
+                                System.out.println("La chambre indique n'existe pas, veuillez réessayer...");
+                            }
+                            break;
+                    }
                     case '2':
                         break;
                     default:
@@ -70,7 +83,7 @@ public class Facturation {
         try {
 
             String fileName = nom_prenom + " " + currentDate;
-            File file = new File(userDirectory + fileName + ".txt");
+            File file = new File(userDirectory + "/" + fileName + ".txt");
 
             if (!file.exists()) {
                 file.createNewFile();
@@ -83,7 +96,7 @@ public class Facturation {
 
             bw.close();
 
-            System.out.println("Facture editee avec succès");
+            System.out.println("Facture editee avec succes");
 
 
             
