@@ -104,7 +104,7 @@ public class Menu {
                         }
                         else {
                             System.out.println("Vous avez entre le numéro d'une chambre non reservee, Veuillez ressayer");
-                            numChambre = 0;
+                            ChoixMenuRepas2 = 0;
                         }
                     }
                     else {
