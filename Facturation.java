@@ -44,8 +44,9 @@ public class Facturation {
 
                             if ((numChambreFacture>= 1 && numChambreFacture <= 7)) {
                                 if (listeStatuts.get(numChambreFacture - 1).estReservee()) {
-                                Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits());
-                                System.out.println(ChoixMenuFacturation);
+                                    Ecrire_Factures(listeStatuts.get(numChambreFacture - 1).getRelatedClient(), listeStatuts.get(numChambreFacture - 1).getRepasCommandes(), listeStatuts.get(numChambreFacture - 1).getNbrNuits(), listeStatuts.get(numChambreFacture - 1).getPrixReservation());
+                                    listeStatuts.get(numChambreFacture - 1).resetStatut();
+                                    System.out.println(ChoixMenuFacturation);
                                 }
                                 else {
                                     System.out.println("La chambre designe n'est pas reserve");
@@ -75,7 +76,7 @@ public class Facturation {
         }
     }
 
-    public static void Ecrire_Factures(String nom_prenom, List<Repas> plats_commandes , int nbrNuits) {
+    public static void Ecrire_Factures(String nom_prenom, List<Repas> plats_commandes , int nbrNuits, int Cout_total) {
 
         String currentDate = getDate.getCurrentDate();
         String userDirectory = System.getProperty("user.home");
@@ -92,7 +93,7 @@ public class Facturation {
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
 
-            bw.write("Nom et prénom du client : " + nom_prenom + "\nRepas commandés : " + plats_commandes + "\nNombre de nuits passés dans l'hotel : " + nbrNuits + "\nCout total : " + " \u20AC");
+            bw.write("Nom et prénom du client : " + nom_prenom + "\nRepas commandés : " + plats_commandes + "\nNombre de nuits passés dans l'hotel : " + nbrNuits + "\nCout total : " + Cout_total + " \u20AC");
 
             bw.close();
 
