@@ -20,6 +20,4 @@ public class VariableReservation implements Serializable{
         nbrNuits = 0;
         prixReservation = 0;
     }
-
-
 }

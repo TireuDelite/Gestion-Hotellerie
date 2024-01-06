@@ -29,6 +29,4 @@ public enum Chambres {
         this.Nombre_Lits = Nombre_Lits;
         this.Prix = Prix;
     }
-
 }
-
