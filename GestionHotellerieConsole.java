@@ -98,8 +98,8 @@ public class GestionHotellerieConsole {
                     break;
                 case '4':
                     // Appelle vers la fonction Menu_Repas
-                    Menu.Menu_Repas(scan, listeStatuts);
                     Clear.clear();
+                    Menu.Menu_Repas(scan, listeStatuts);
                     break;
                 case '5':
                     // Appelle vers la fonction Menu Facturation
