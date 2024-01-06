@@ -12,7 +12,6 @@ public class Menu {
         String ChoixMenuRepas = "";
 
         while (!ChoixMenuRepas.equals("3")) {
-                Clear.clear();
                 System.out.println("----------------------------------------");
                 System.out.println("             Commande de Repas          ");
                 System.out.println("----------------------------------------");
@@ -99,8 +98,18 @@ public class Menu {
 
                 try {
 
-                    listeStatuts.get(numChambre - 1).addRepasCommandes(Repas.values()[ChoixMenuRepas2 - 1]); // On ajoute le repas en fonction du numéro de chambre dans la liste
-
+                    if (numChambre >= 1 && numChambre <= 7) {
+                        if (listeStatuts.get(numChambre - 1).estReservee()) {
+                        listeStatuts.get(numChambre - 1).addRepasCommandes(Repas.values()[ChoixMenuRepas2 - 1]); // On ajoute le repas en fonction du numéro de chambre dans la liste
+                        }
+                        else {
+                            System.out.println("Vous avez entre le numéro d'une chambre non reservee, Veuillez ressayer");
+                            numChambre = 0;
+                        }
+                    }
+                    else {
+                        System.out.println("Vous avez entre un mauvais numéro de chambre, Veuillez ressayer")
+                    }
                 }
                 catch (InputMismatchException e) { // Exception levé si l'utilisateur ne renseigne pas un numéro compris dans le pool 1 à 6
 
