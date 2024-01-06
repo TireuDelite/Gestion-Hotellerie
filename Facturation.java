@@ -66,11 +66,12 @@ public class Facturation {
     public static void Ecrire_Factures(String nom_prenom, List<Repas> plats_commandes , int nbrNuits, int Cout_Total) {
 
         String currentDate = getDate.getCurrentDate();
+        String userDirectory = System.getProperty("user.home");
 
         try {
 
             String fileName = nom_prenom + " " + currentDate;
-            File file = new File("/etc/JAVA/Gestion-Hotellerie/Factures/" + fileName + ".txt");
+            File file = new File(userDirectory + fileName + ".txt");
 
             if (!file.exists()) {
                 file.createNewFile();
