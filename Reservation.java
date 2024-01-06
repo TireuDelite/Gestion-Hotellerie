@@ -10,9 +10,9 @@ public class Reservation {
         chambresReservables=0;
         Clear.clear();
         System.out.println("----------------------------------------");
-        System.out.println("         Système de réservation         ");
+        System.out.println("         Système de reservation         ");
         System.out.println("----------------------------------------");
-        System.out.println("Détails des chambres et des réservations en cours :");
+        System.out.println("Details des chambres et des reservations en cours :");
         for(StatutChambres statut : listeStatuts)
         {
             if (statut.estReservee() == false) {
@@ -233,11 +233,11 @@ public class Reservation {
             System.out.println("       Que souhaitez vous faire ?       ");
             System.out.println("----------------------------------------");
             if (chambresReservables>0)
-                System.out.println("1. Effectuer une réservation");
+                System.out.println("1. Effectuer une reservation");
             if (chambresReservables<7)
             {
-                System.out.println("2. Annuler une réservation");
-                System.out.println("3. Modifier une réservation");
+                System.out.println("2. Annuler une reservation");
+                System.out.println("3. Modifier une reservation");
             }
             System.out.println("4. Revenir au menu principal");
             
@@ -262,7 +262,7 @@ public class Reservation {
                         {
                             while (numChambre>7 || numChambre<1) 
                             {
-                                System.out.println("Veuillez entrer le numero de la chambre que vous souhaitez réserver (entre 1 et 7)...");
+                                System.out.println("Veuillez entrer le numero de la chambre que vous souhaitez reserver (entre 1 et 7)...");
                                 numChambre = scan.nextInt();
                                 scan.nextLine();//pour consommer le retour a la ligne
                                 if (numChambre>7 || numChambre<1)                          
@@ -343,7 +343,7 @@ public class Reservation {
                     }
                     break;
                 case '2':
-                    if(chambresReservables==7)//si l'utilisateur appuie sur 2 meme alors que ca ne lui a pas ete proposé
+                    if(chambresReservables==7)//si l'utilisateur appuie sur 2 meme alors que ca ne lui a pas ete propose
                         break;//on sort du switch et on recommence la boucle
                     dansBoucle2=true;
                     while (dansBoucle2) {
@@ -403,7 +403,7 @@ public class Reservation {
                     }
                     break;
                 case '3':
-                    if(chambresReservables==7)//si l'utilisateur appuie sur 2 meme alors que ca ne lui a pas ete proposé
+                    if(chambresReservables==7)//si l'utilisateur appuie sur 2 meme alors que ca ne lui a pas ete propose
                         break;//on sort du switch et on recommence la boucle
                     dansBoucle2=true;
                     while (dansBoucle2) {

@@ -3,19 +3,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StatutChambres implements Serializable {
-    private Chambres typeChambre;       // Type de chambre basé sur l'énumération Chambres
-    private boolean estReservee;        // Indicateur de réservation
-    private String relatedClient;       // Nom du client relié à la réservation
-    private List<Repas> repasCommandes;  // repas commandés
-    private int nbrNuits;               // Nombre de nuits de la réservation
+    private Chambres typeChambre;       // Type de chambre base sur l'enumeration Chambres
+    private boolean estReservee;        // Indicateur de reservation
+    private String relatedClient;       // Nom du client relie à la reservation
+    private List<Repas> repasCommandes; // repas commandes
+    private int nbrNuits;               // Nombre de nuits de la reservation
+    private int prixReservation;        // prix total de la réservation
 
     // Constructeur
     public StatutChambres(Chambres typeChambre) {
         this.typeChambre = typeChambre;
-        estReservee = false; // Initialement non réservée
+        estReservee = false; // Initialement non reservee
         relatedClient = null;
         repasCommandes = new ArrayList<>();
         nbrNuits = 0;
+        prixReservation = 0;
     }
 
     // Getter pour typeChambre
@@ -48,6 +50,16 @@ public class StatutChambres implements Serializable {
         return nbrNuits;
     }
 
+    // Getter pour prixReservation
+    public int getPrixReservation() {
+        prixReservation=0;
+        prixReservation = nbrNuits * typeChambre.getPrix();
+        for (Repas repas : repasCommandes)
+        {
+            prixReservation = prixReservation + repas.getPrixPlat();
+        }
+        return prixReservation;
+    }
 
     // Setter pour estReservee
     public void setReservation(boolean estReservee) {
@@ -71,9 +83,9 @@ public class StatutChambres implements Serializable {
     }
 
     public void resetStatut() {
-        estReservee = false; // Remet la réservation à non réservée
-        relatedClient = null; // Supprime le client lié
-        repasCommandes.clear(); // Efface la liste des repas commandés
+        estReservee = false; // Remet la reservation à non reservee
+        relatedClient = null; // Supprime le client lie
+        repasCommandes.clear(); // Efface la liste des repas commandes
         nbrNuits = 0; // Remet le nombre de nuits à 0
     }
 

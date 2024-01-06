@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Facturation {
     
 
-    public static void Menu_Facturation(Scanner scan, List<StatutChambres> listeStatuts) { //Cette méthode permet de récup le plat sélectionné 
+    public static void Menu_Facturation(Scanner scan, List<StatutChambres> listeStatuts) { //Cette methode permet de recup le plat selectionne 
 
         Clear.clear();
 
@@ -33,10 +33,10 @@ public class Facturation {
 
                     case '1':
                         System.out.println("----------------------------------------");
-                        System.out.println("          Édition de la facture         ");
+                        System.out.println("          edition de la facture         ");
                         System.out.println("----------------------------------------");
 
-                        System.out.println(("Pour quel chambre souhaitez vous éditer une facture ?"));
+                        System.out.println(("Pour quel chambre souhaitez vous editer une facture ?"));
 
                         numChambreFacture = scan.nextInt();
 
@@ -82,8 +82,8 @@ public class Facturation {
 
             bw.close();
 
-            System.out.println("Facture éditée avec succès");
-
+            System.out.println("Facture editee avec succès");
+            
         }
 
         catch (IOException e) {

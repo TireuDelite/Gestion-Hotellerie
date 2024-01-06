@@ -2,7 +2,7 @@ public enum Repas {
 
     Numero_1("Steak Frites", 9),
     Numero_2("Lasagnes", 10),
-    Numero_3("Salade César", 8),
+    Numero_3("Salade Cesar", 8),
     Numero_4("Hamburger", 9),
     Numero_5("Spaghetti Bolognaise", 6);
 

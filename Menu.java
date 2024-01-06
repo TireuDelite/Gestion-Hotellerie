@@ -7,7 +7,7 @@ public class Menu {
 
     static Repas[] menus = Repas.values();
 
-    public static void Menu_Repas(Scanner scan, List<StatutChambres> listeStatuts) { //Cette méthode permet de récup le plat sélectionné 
+    public static void Menu_Repas(Scanner scan, List<StatutChambres> listeStatuts) { //Cette methode permet de recup le plat selectionne 
 
         String ChoixMenuRepas = "";
 
@@ -44,7 +44,7 @@ public class Menu {
                         break;
                     case '2':
                         Clear.clear();
-                        System.out.println("Voici les liens pourvant être utilisés pour commander en dehors de l'hotel");
+                        System.out.println("Voici les liens pourvant être utilises pour commander en dehors de l'hotel");
                         System.out.println("https://www.ubereats.com/fr/");
                         System.out.println("http://www.deliveroo.fr");
                         System.out.println("https://www.just-eat.fr");
@@ -82,7 +82,7 @@ public class Menu {
                 System.out.println("Vous souhaitez ? :");
                 System.out.println("1. Steak Frites");
                 System.out.println("2. Lasagnes");
-                System.out.println("3. Salade César");
+                System.out.println("3. Salade Cesar");
                 System.out.println("4. Hamburger");  
                 System.out.println("5. Spaghetti Bolognaise");
                 System.out.println("6. Revenir en arrière");
@@ -92,7 +92,7 @@ public class Menu {
 
             if (ChoixMenuRepas2 > 0 && ChoixMenuRepas2 != 6) {
 
-                System.out.println("Veuillez nous indiquer votre numéro de chambre :");
+                System.out.println("Veuillez nous indiquer votre numero de chambre :");
 
                 numChambre = scan.nextInt();
 
